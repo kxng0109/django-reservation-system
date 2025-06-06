@@ -1,8 +1,35 @@
 {%extends "base.html" %}
-{%block title%} All reservations {%endblock%}
+{%block title%} 
+    {%if search_term%}
+        Result for {{search_term}}
+    {%else%}
+        All reservations 
+    {%endif%}
+{%endblock%}
 {%block content%}    
     <h2>Reservations (Staff only)</h2>
 
+    <form method="GET">
+        {%csrf_token%}
+        <input 
+            type="text" 
+            placeholder="Search firstname or lastname"
+            value="{{search_term}}" 
+            id="search" 
+            name="q"
+        >
+        <button type="submit">Search</button>
+
+        {%if search_term %}
+            <a 
+                href="{%url 'reservation_list'%}" 
+                class="btn btn-secondary" 
+                style="margin-left: 8px;"
+            >
+                Clear
+            </a>
+        {%endif%}
+    </form>
     <table>
         <thead>
             <tr>
@@ -18,38 +45,40 @@
         </thead>
 
         <tbody>
-            {%if reservations %} {%for reservation in reservations%}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td>
-                    <a
-                        href="{% url 'reservation_detail' pk=reservation.pk%}"
-                    >
-                        {{reservation.first_name}}
-                    </a>
-                </td>
-                <td>{{reservation.last_name}}</td>
-                <td>{{reservation.date}}</td>
-                <td>{{reservation.party_size}}</td>
-                <td>{{reservation.notes}}</td>
-                <td>{{reservation.created_at}}</td>
-                <td id="action-column">
-                    <a href="{% url 'reservation_detail' pk=reservation.pk %}" class="btn">
-                        View
-                    </a>
+            {%if reservations %} 
+                {%for reservation in reservations%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>
+                            <a
+                                href="{% url 'reservation_detail' pk=reservation.pk%}"
+                            >
+                                {{reservation.first_name}}
+                            </a>
+                        </td>
+                        <td>{{reservation.last_name}}</td>
+                        <td>{{reservation.date}}</td>
+                        <td>{{reservation.party_size}}</td>
+                        <td>{{reservation.notes}}</td>
+                        <td>{{reservation.created_at}}</td>
+                        <td id="action-column">
+                            <a href="{% url 'reservation_detail' pk=reservation.pk %}" class="btn">
+                                View
+                            </a>
 
-                    <a href="{% url 'reservation_edit' pk=reservation.pk%}" class="btn btn-warning">
-                        Edit
-                    </a>
+                            <a href="{% url 'reservation_edit' pk=reservation.pk%}" class="btn btn-warning">
+                                Edit
+                            </a>
 
-                    <a
-                        href="{% url 'reservation_delete' pk=reservation.pk%}" class="btn btn-danger"
-                    >
-                        Delete
-                    </a>
-                </td>
-            </tr>
-            {%endfor%} {%endif%}
+                            <a
+                                href="{% url 'reservation_delete' pk=reservation.pk%}" class="btn btn-danger"
+                            >
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {%endfor%} 
+            {%endif%}
         </tbody>
     </table>
 {%endblock%}

@@ -13,7 +13,7 @@ class Reservation(models.Model):
     date = models.DateField(validators=[validate_dates])
     party_size = models.PositiveIntegerField()
     created_at = models.DateField(auto_now_add=True)
-    notes = models.CharField(max_length=1000)
+    notes = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.last_name} {self.first_name}"

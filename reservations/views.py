@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ReservationForm
-from django.http import HttpResponse, Http404
+from django.http import HttpRequest
 from .models import Reservation
+from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
@@ -24,11 +25,20 @@ def reservation_success(request):
     return render(request, "reservation_success.html")
 
 @staff_member_required
-def reservation_list(request):
-    reservations = Reservation.objects.order_by("-date", "-created_at")
+def reservation_list(request:HttpRequest):
+    q = request.GET.get("q", "").strip()
+    if(q):
+        reservations = Reservation.objects.filter(
+            Q(first_name__icontains = q) | Q(last_name__icontains = q)
+        ).order_by('-date', '-created_at')
+    else: 
+        reservations = Reservation.objects.order_by("-date", "-created_at")
+    
     context = {
-        'reservations': reservations
+        'reservations': reservations,
+        'search_term': q
     }
+
     return render(request, 'reservation_list.html', context)
 
 @staff_member_required

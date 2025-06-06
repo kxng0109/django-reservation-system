@@ -137,3 +137,10 @@ tr:hover {
 #action-column > a{
     margin-inline: 5px;
 }
+
+#search{
+    padding: 6px; 
+    width: 200px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+}
