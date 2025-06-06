@@ -1,71 +1,46 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Reservation details for #{{reservation.pk}}</title>
-        <style>
-            dl {
-                width: 50%;
-                margin: 0 auto;
-            }
-            dt {
-                font-weight: bold;
-                margin-top: 10px;
-            }
-            dd {
-                margin-left: 20px;
-                margin-bottom: 10px;
-            }
-            .actions a {
-                margin-right: 10px;
-                text-decoration: none;
-                color: blue;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Reservations Detail for ID: {{reservation.pk}}</h1>
-        <div>
-            <p>
-                <a href="{% url 'reservation_list' %}"> Back to List </a>
-            </p>
-            <p>
-                <a href="{% url 'reservation_edit' pk=reservation.pk%}">
-                    Edit
-                </a>
-            </p>
-            <p>
-                <a href="{% url 'reservation_delete' pk=reservation.pk%}">
-                    Delete
-                </a>
-            </p>
-        </div>
+{%extends "base.html"%}
+{%block title%}Reservation details for #{{reservation.pk}}{%endblock%}
+{%block content%}
+    <h2>Reservations Detail for ID: {{reservation.pk}}</h2>
+    <div style="margin-bottom: 20px; display: flex; column-gap: 20px;">
+        <p>
+            <a href="{% url 'reservation_list' %}" class="btn btn-secondary"> Back to List </a>
+        </p>
+        <p>
+            <a href="{% url 'reservation_edit' pk=reservation.pk%}" class="btn btn-warning">
+                Edit
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'reservation_delete' pk=reservation.pk%}" class="btn btn-danger">
+                Delete
+            </a>
+        </p>
+    </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Date</th>
-                    <th>Party Size</th>
-                    <th>Notes</th>
-                    <th>Created At</th>
-                </tr>
-            </thead>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date</th>
+                <th>Party Size</th>
+                <th>Notes</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>{{reservation.first_name}}</td>
-                    <td>{{reservation.last_name}}</td>
-                    <td>{{reservation.date}}</td>
-                    <td>{{reservation.party_size}}</td>
-                    <td>{{reservation.notes}}</td>
-                    <td>{{reservation.created_at}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </body>
-</html>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>{{reservation.first_name}}</td>
+                <td>{{reservation.last_name}}</td>
+                <td>{{reservation.date}}</td>
+                <td>{{reservation.party_size}}</td>
+                <td>{{reservation.notes}}</td>
+                <td>{{reservation.created_at}}</td>
+            </tr>
+        </tbody>
+    </table>
+{%endblock%}

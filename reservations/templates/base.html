@@ -1,0 +1,21 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'reservations/css/styles.css'%}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{%url 'make_reservation'%}">Make Reservation</a>
+        <a href="{%url 'reservation_list'%}">View All (Staff)</a>
+    </div>
+
+    <div class="container">
+        {%block content%}
+        {%endblock%}
+    </div>
+</body>
+</html>

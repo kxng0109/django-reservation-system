@@ -1,0 +1,139 @@
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  background-color: #004a99;
+  color: #fff;
+  padding: 10px 20px;
+}
+.navbar a {
+  color: #fff;
+  margin-right: 15px;
+  font-weight: bold;
+}
+.navbar a:hover {
+  color: #ddd;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+form input[type="text"],
+form input[type="date"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form textarea {
+  resize: vertical;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #0066cc;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.btn:hover {
+  background-color: #005bb5;
+}
+.btn-secondary {
+  background-color: #777;
+}
+.btn-secondary:hover {
+  background-color: #555;
+}
+.btn-danger {
+  background-color: #d9534f;
+}
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+.btn-warning {
+  background-color: #f0ad4e;
+  color: #212529;
+}
+.btn-warning:hover {
+  background-color: #ec971f;
+  color: #212529;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.alert-info {
+  background-color: #d9edf7;
+  color: #31708f;
+  border: 1px solid #bce8f1;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#action-column{
+    display: flex;
+}
+
+#action-column > a{
+    margin-inline: 5px;
+}

@@ -1,30 +1,23 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Confirm Deletion for #{{reservation.pk}}</title>
-    </head>
-    <body>
-        <h1>Are you sure you want to delete reservation for:</h1>
-        <div>
-            <ul style="list-style: none; padding: none">
-                <li>First Name: {{reservation.first_name}}</li>
-                <li>Last Name: {{reservation.last_name}}</li>
-                <li>Party Size: {{reservation.party_size}}</li>
-                <li>Date: {{reservation.date}}</li>
-            </ul>
-            <div class="buttons">
-                <form method="post">
-                    {%csrf_token%}
-                    <button type="submit" style="color: red">Yes</button>
-                </form>
-                <a
-                    href="{%url 'reservation_detail' pk=reservation.pk%}"
-                    style="color: green"
-                    >No</a
-                >
-            </div>
+{%extends "base.html"%}
+{%block title%}Confirm Deletion for #{{reservation.pk}}{%endblock%}
+{%block content%}
+    <h2>Are you sure you want to delete reservation for:</h2>
+    <div>
+        <ul style="list-style: none; padding: none">
+            <li>First Name: {{reservation.first_name}}</li>
+            <li>Last Name: {{reservation.last_name}}</li>
+            <li>Party Size: {{reservation.party_size}}</li>
+            <li>Date: {{reservation.date}}</li>
+        </ul>
+        <div class="buttons">
+            <form method="post" style="margin-top: 20px; display: inline;">
+                {%csrf_token%}
+                <button type="submit" class="btn btn-danger">Yes</button>
+            </form>
+            <a
+                href="{%url 'reservation_detail' pk=reservation.pk%}" class="btn btn-secondary"
+                >No</a
+            >
         </div>
-    </body>
-</html>
+    </div>
+{%endblock%}

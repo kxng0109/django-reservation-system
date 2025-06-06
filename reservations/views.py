@@ -21,9 +21,7 @@ def make_reservation(request):
     return render(request, "make_reservation.html", context)
 
 def reservation_success(request):
-    reservation = get_object_or_404(Reservation)
-    context = {"reservation": reservation}
-    return render(request, "reservation_success.html", context)
+    return render(request, "reservation_success.html")
 
 @staff_member_required
 def reservation_list(request):

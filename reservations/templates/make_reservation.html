@@ -1,15 +1,9 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Make a reservation</title>
-    </head>
-    <body>
-        <h1>Reserve a table</h1>
-        <form method="POST">
-            {%csrf_token%} {{form.as_p}}
-            <button type="submit">Submit Reservation</button>
-        </form>
-    </body>
-</html>
+{%extends 'base.html'%}
+{%block title %}Make a reservation{%endblock%}
+{%block content%}
+    <h2>Reserve a table</h2>
+    <form method="POST">
+        {%csrf_token%} {{form.as_p}}
+        <button type="submit" class="btn">Submit Reservation</button>
+    </form>
+{%endblock%}
