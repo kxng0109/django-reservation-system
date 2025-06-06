@@ -113,7 +113,7 @@ booking-system/
    ```bash
    git clone https://github.com/kxng0109/django-reservation-system.git
    cd django-reservation-system
-````
+   ```
 
 2. **(Optional) Install pyenv and create `.python-version`**
    If you use `pyenv`, run:
