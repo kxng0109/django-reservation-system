@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>All reservations</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th,
+            td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+            td>a{
+                margin-inline: 10px;
+            }
+            th {
+                background-color: #f4f4f4;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Reservations (Staff only)</h1>
+        <a href="{% url 'make_reservation' %}"> Add a new reservation</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date</th>
+                    <th>Party Size</th>
+                    <th>Notes</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {%if reservations %} {%for reservation in reservations%}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <a
+                            href="{% url 'reservation_detail' pk=reservation.pk%}"
+                        >
+                            {{reservation.first_name}}
+                        </a>
+                    </td>
+                    <td>{{reservation.last_name}}</td>
+                    <td>{{reservation.date}}</td>
+                    <td>{{reservation.party_size}}</td>
+                    <td>{{reservation.notes}}</td>
+                    <td>{{reservation.created_at}}</td>
+                    <td>
+                        <a href="{% url 'reservation_detail' pk=reservation.pk %}">
+                            View
+                        </a>
+
+                        <a href="{% url 'reservation_edit' pk=reservation.pk%}">
+                            Edit
+                        </a>
+
+                        <a
+                            href="{% url 'reservation_delete' pk=reservation.pk%}"
+                        >
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {%endfor%} {%endif%}
+            </tbody>
+        </table>
+    </body>
+</html>

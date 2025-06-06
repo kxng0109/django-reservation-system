@@ -4,7 +4,7 @@ from .models import Reservation
 # Register your models here.
 
 class ReservationModel(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'party_size', 'created_at')
+    list_display = ('first_name', 'last_name', 'date', 'party_size', 'created_at')
     list_filter = ('date',)
     search_fields = ('name', 'notes')
 
